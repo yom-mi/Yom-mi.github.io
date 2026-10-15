@@ -1,0 +1,549 @@
+
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Derecho Fiscal | MANAHUIA & ASOCIADOS</title>
+
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: "Libre Baskerville", Georgia, serif;
+        }
+
+        body {
+            background-color: #faf7c1;
+            min-height: 100vh;
+        }
+
+        /* BARRA DE NAVEGACIÓN */
+        .barra-navegacion {
+            width: 100%;
+            padding: 18px 40px;
+            background: linear-gradient(90deg, #e6c14a, #faf7c1);
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            position: relative;
+            z-index: 10;
+        }
+
+        .logo-nombre {
+            color: #242423;
+            font-size: 22px;
+            letter-spacing: 2px;
+        }
+
+        .enlaces {
+            display: flex;
+            gap: 35px;
+        }
+
+        .barra-navegacion a {
+            color: #111;
+            text-decoration: none;
+            font-size: 17px;
+            letter-spacing: 1px;
+            transition: 0.3s ease;
+        }
+
+        .barra-navegacion a:hover {
+            color: #8f6c0c;
+        }
+
+        /* TÍTULO */
+        .titulo {
+            text-align: center;
+            margin: 55px 20px 35px;
+        }
+
+        .titulo h1 {
+            color: #9a781b;
+            font-size: 36px;
+            margin-bottom: 15px;
+        }
+
+        .titulo p {
+            color: #161414;
+            font-size: 16px;
+            line-height: 1.8;
+        }
+
+        .linea-dorada {
+            width: 75px;
+            height: 4px;
+            background: #c9a227;
+            margin: 20px auto 0;
+            border-radius: 5px;
+        }
+
+        /* PERFIL PROFESIONAL */
+        .perfiles {
+            width: 90%;
+            max-width: 1100px;
+            margin: auto;
+            display: grid;
+            grid-template-columns: 1fr;
+            justify-items: center;
+            padding-bottom: 55px;
+        }
+
+        .perfil {
+            width: 100%;
+            max-width: 650px;
+            background: rgba(26, 14, 9, 0.93);
+            border: 1px solid #5c4033;
+            border-radius: 15px;
+            padding: 35px;
+            text-align: center;
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.3);
+            transition: 0.3s;
+        }
+
+        .perfil:hover {
+            transform: translateY(-5px);
+            border-color: #d6b98c;
+        }
+
+        .foto {
+            width: 180px;
+            height: 220px;
+            margin: 0 auto 25px;
+            border-radius: 12px;
+            overflow: hidden;
+            border: 3px solid #d6b98c;
+        }
+
+        .foto img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+        }
+
+        .perfil h2 {
+            color: #d6b98c;
+            font-size: 26px;
+            line-height: 1.5;
+            margin-bottom: 8px;
+        }
+
+        .perfil h3 {
+            color: #e6c14a;
+            font-size: 18px;
+            margin-bottom: 20px;
+        }
+
+        .perfil > p {
+            color: #f1eeee;
+            line-height: 1.8;
+            font-size: 15px;
+            margin-bottom: 18px;
+        }
+
+        .datos {
+            text-align: left;
+            margin-top: 15px;
+        }
+
+        .datos p {
+            color: #f1eeee;
+            line-height: 1.8;
+            font-size: 14px;
+            margin-bottom: 8px;
+        }
+
+        .datos strong {
+            color: #d6b98c;
+        }
+
+        /* CATÁLOGO FISCAL */
+        .catalogo {
+            width: 90%;
+            max-width: 1100px;
+            margin: 0 auto 70px;
+        }
+
+        .catalogo-encabezado {
+            text-align: center;
+            margin-bottom: 40px;
+        }
+
+        .subtitulo {
+            color: #8f6c0c;
+            text-transform: uppercase;
+            letter-spacing: 3px;
+            font-size: 13px;
+            margin-bottom: 12px;
+        }
+
+        .catalogo-encabezado h2 {
+            color: #38251d;
+            font-size: 34px;
+            margin-bottom: 18px;
+        }
+
+        .descripcion {
+            color: #51443b;
+            max-width: 800px;
+            margin: auto;
+            font-size: 15px;
+            line-height: 1.9;
+        }
+
+        /* TARJETAS */
+        .servicios-contenedor {
+            display: grid;
+            grid-template-columns: repeat(2, minmax(0, 1fr));
+            gap: 25px;
+        }
+
+        .servicio {
+            background: #fffdf0;
+            border: 1px solid #e5d9a5;
+            border-radius: 12px;
+            padding: 30px;
+            box-shadow: 0 5px 18px rgba(46, 32, 28, 0.08);
+            position: relative;
+            overflow: hidden;
+            transition: 0.3s ease;
+        }
+
+        .servicio::before {
+            content: "";
+            position: absolute;
+            top: 0;
+            left: 0;
+            height: 4px;
+            width: 100%;
+            background: #c9a227;
+        }
+
+        .servicio:hover {
+            transform: translateY(-6px);
+            border-color: #c9a227;
+            box-shadow: 0 12px 28px rgba(46, 32, 28, 0.16);
+        }
+
+        .numero-servicio {
+            width: 45px;
+            height: 45px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            border-radius: 50%;
+            background: #eee2c6;
+            color: #5d2e18;
+            font-size: 17px;
+            font-weight: bold;
+            margin-bottom: 18px;
+        }
+
+        .servicio h3 {
+            color: #38251d;
+            font-size: 18px;
+            line-height: 1.6;
+            margin-bottom: 12px;
+        }
+
+        .servicio p {
+            color: #5c5149;
+            font-size: 14px;
+            line-height: 1.9;
+        }
+
+        /* CONTACTO */
+        .contacto-servicios {
+            margin-top: 40px;
+            padding: 35px 25px;
+            background: #38251d;
+            border: 1px solid #c9a227;
+            border-radius: 12px;
+            text-align: center;
+        }
+
+        .contacto-servicios h3 {
+            color: #e6c14a;
+            font-size: 24px;
+            line-height: 1.5;
+            margin-bottom: 15px;
+        }
+
+        .contacto-servicios p {
+            color: #f4eadb;
+            font-size: 15px;
+            line-height: 1.8;
+            margin-bottom: 22px;
+        }
+
+        .boton {
+            display: inline-block;
+            margin-top: 5px;
+            padding: 13px 25px;
+            background: #d6b98c;
+            color: #1a0e09;
+            text-decoration: none;
+            border-radius: 7px;
+            font-weight: bold;
+            transition: 0.3s;
+        }
+
+        .boton:hover {
+            background: white;
+            transform: translateY(-2px);
+        }
+
+        /* PIE DE PÁGINA */
+        footer {
+            background: #faf7c1;
+            color: #252525;
+            text-align: center;
+            padding: 25px;
+            font-size: 0.9rem;
+            border-top: 1px solid #e6c14a;
+        }
+
+        footer span {
+            color: #8f6c0c;
+        }
+
+        /* DISEÑO RESPONSIVO */
+        @media (max-width: 750px) {
+            .barra-navegacion {
+                flex-direction: column;
+                gap: 12px;
+                padding: 18px 20px;
+            }
+
+            .logo-nombre {
+                font-size: 18px;
+                text-align: center;
+            }
+
+            .titulo h1 {
+                font-size: 29px;
+            }
+
+            .perfil {
+                padding: 25px 20px;
+            }
+
+            .perfil h2 {
+                font-size: 22px;
+            }
+
+            .catalogo-encabezado h2 {
+                font-size: 27px;
+            }
+
+            .servicios-contenedor {
+                grid-template-columns: 1fr;
+            }
+        }
+    </style>
+</head>
+
+<body>
+
+    <!-- NAVEGACIÓN -->
+    <nav class="barra-navegacion">
+
+        <div class="logo-nombre">MANAHUIA & ASOCIADOS</div>
+
+        <div class="enlaces">
+            <a href="op.html" class="activo">Inicio</a>
+        </div>
+
+    </nav>
+
+    <!-- PRESENTACIÓN -->
+    <header class="titulo">
+
+        <h1>Nuestros Abogados</h1>
+
+        <p>
+            Conoce a los profesionales que estarán a cargo
+            de tu asesoría jurídica.
+        </p>
+
+        <div class="linea-dorada"></div>
+
+    </header>
+
+    <!-- PERFIL DE LA ABOGADA -->
+    <section class="perfiles">
+
+        <article class="perfil">
+
+            <div class="foto">
+                <img src="mau.png"
+                     alt="Fotografía de la Lic. Ambar Téllez Palafox">
+            </div>
+
+            <h2>Lic. Mauricio Yahir Peralta Cruz</h2>
+
+            <h3>Especialista en Derecho Administrativo
+
+            </h3>
+
+
+
+            <div class="datos">
+
+                <p>
+                    <strong>Experiencia:</strong> 3 años
+                </p>
+
+                <p>
+                    <strong>Especialidad:</strong> Derecho Administrativo
+                </p>
+
+                <p>
+                    <strong>Atención:</strong> Presencial y en línea
+                </p>
+
+                <p>
+                    <strong>Contacto:</strong>
+                    <a href="tel:7294696249"
+                       style="color: #f1eeee; text-decoration: none;">
+                        722-375-0594
+                    </a>
+                </p>
+
+            </div>
+
+        </article>
+
+    </section>
+
+    <!-- CATÁLOGO DE SERVICIOS FISCALES -->
+    <section class="catalogo">
+
+        <div class="catalogo-encabezado">
+
+           
+
+            <h2>Catálogo de Servicios</h2>
+
+            <p class="descripcion">
+                <strong>Derecho Administrativo</strong><br>
+                 Asesoría y representación jurídica frente a actos, resoluciones
+            y procedimientos de las autoridades administrativas.
+            </p>
+
+            <div class="linea-dorada"></div>
+
+        </div>
+
+        <div class="servicios-contenedor">
+
+            <!-- SERVICIO 1 -->
+            <article class="servicio">
+
+                <div class="numero-servicio">01</div>
+
+                <h3>Impugnación de multas y sanciones administrativa</h3>
+
+                <p>
+                    Asesoría y representación para debatir multas y
+                    sanciones impuestas por autoridades administrativas,
+                    cuando existan fundamentos legales para hacerlo.
+                </p>
+
+            </article>
+
+            <!-- SERVICIO 2 -->
+            <article class="servicio">
+
+                <div class="numero-servicio">02</div>
+
+                <h3>Defensa frente a clausuras y suspensiones</h3>
+
+                <p>
+                     Defensa jurídica ante clausuras, suspensiones de
+                    actividades y otras medidas de autoridad que puedan
+                    afectar los derechos de personas o establecimientos.
+                </p>
+
+            </article>
+
+            <!-- SERVICIO 3 -->
+            <article class="servicio">
+
+                <div class="numero-servicio">03</div>
+
+                <h3>Revisión de resoluciones administrativas</h3>
+
+                <p>
+                   Análisis de resoluciones emitidas por autoridades para
+                    identificar posibles irregularidades y determinar
+                    las vías legales de defensa aplicables.
+                </p>
+
+            </article>
+
+            <!-- SERVICIO 4 -->
+            <article class="servicio">
+
+                <div class="numero-servicio">04</div>
+
+                <h3>Licencias, permisos y autorizaciones</h3>
+
+                <p>
+                    Asesoría jurídica sobre los requisitos, trámites y
+                    procedimientos relacionados con licencias, permisos
+                    y autorizaciones administrativas.
+                </p>
+
+            </article>
+
+            <!-- SERVICIO 5 -->
+            <article class="servicio">
+
+                <div class="numero-servicio">05</div>
+
+                <h3>Procedimientos administrativos sancionadores</h3>
+
+                <p>
+                    Asesoría y defensa durante procedimientos iniciados
+                    por autoridades para determinar posibles infracciones
+                    e imponer sanciones administrativas.
+                </p>
+
+            </article>
+
+        
+
+        </div>
+
+        <!-- INVITACIÓN A CONTACTAR -->
+        <div class="contacto-servicios">
+
+            <h3>¿Necesitas asesoría en materia administrativa?</h3>
+
+            <p>
+             Contáctanos para conocer las alternativas jurídicas
+                que podrían corresponder a tu situación.
+            </p>
+
+            <a href="contactanos.html" class="boton">
+                Solicitar asesoría
+            </a>
+
+        </div>
+
+    </section>
+
+    <!-- PIE DE PÁGINA -->
+    <footer>
+
+        © 2026
+        <span>MANAHUIA & ASOCIADOS</span>
+        | Todos los derechos reservados.
+
+    </footer>
+
+</body>
+</html>

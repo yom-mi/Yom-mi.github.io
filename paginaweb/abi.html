@@ -1,0 +1,525 @@
+
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Perfil del Abogado | MANAHUIA & ASOCIADOS</title>
+
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: "Libre Baskerville", Georgia, serif;
+        }
+
+        body {
+            background-color: #faf7c1;
+            min-height: 100vh;
+        }
+
+        /* BARRA DE NAVEGACIÓN */
+        .barra-navegacion {
+            width: 100%;
+            padding: 18px 40px;
+            background: linear-gradient(90deg, #e6c14a, #faf7c1);
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            position: relative;
+            z-index: 10;
+        }
+
+        .logo-nombre {
+            color: #242423;
+            font-size: 22px;
+            letter-spacing: 2px;
+        }
+
+        .barra-navegacion ul {
+            list-style: none;
+        }
+
+        .barra-navegacion a {
+            color: #111111;
+            text-decoration: none;
+            font-size: 17px;
+            letter-spacing: 1px;
+            transition: 0.3s ease;
+        }
+
+        .barra-navegacion a:hover {
+            color: #8f6c0c;
+        }
+
+        /* PERFIL DEL ABOGADO */
+        .perfil {
+            width: 85%;
+            max-width: 1000px;
+            margin: 60px auto 45px;
+            background: rgba(46, 32, 28, 0.95);
+            border: 1px solid #e6c14a;
+            border-radius: 15px;
+            padding: 45px;
+            display: flex;
+            align-items: center;
+            gap: 50px;
+            box-shadow: 0 10px 30px rgba(46, 40, 40, 0.25);
+        }
+
+        .foto {
+            width: 280px;
+            height: 350px;
+            border-radius: 12px;
+            overflow: hidden;
+            border: 3px solid #d6b98c;
+            flex-shrink: 0;
+        }
+
+        .foto img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+        }
+
+        .informacion {
+            flex: 1;
+        }
+
+        .informacion h1 {
+            color: #d6b98c;
+            font-size: 32px;
+            margin-bottom: 12px;
+        }
+
+        .informacion h3 {
+            color: #f0d174;
+            font-size: 19px;
+            margin-bottom: 25px;
+        }
+
+        .informacion p {
+            color: #dddddd;
+            line-height: 1.7;
+            margin-bottom: 18px;
+            font-size: 15px;
+        }
+
+        .datos {
+            margin-top: 20px;
+        }
+
+        .datos p {
+            margin-bottom: 10px;
+        }
+
+        .datos strong {
+            color: #d6b98c;
+        }
+
+        /* CATÁLOGO DE SERVICIOS */
+        .catalogo {
+            width: 90%;
+            max-width: 1100px;
+            margin: 0 auto 70px;
+            padding: 20px 0;
+        }
+
+        .catalogo-encabezado {
+            text-align: center;
+            margin-bottom: 40px;
+        }
+
+        .catalogo-encabezado .subtitulo {
+            color: #8f6c0c;
+            text-transform: uppercase;
+            letter-spacing: 3px;
+            font-size: 13px;
+            margin-bottom: 12px;
+        }
+
+        .catalogo-encabezado h2 {
+            font-size: 34px;
+            color: #38251d;
+            margin-bottom: 18px;
+        }
+
+        .catalogo-encabezado p {
+            color: #51443b;
+            max-width: 720px;
+            margin: 0 auto;
+            line-height: 1.8;
+            font-size: 15px;
+        }
+
+        .linea-dorada {
+            width: 75px;
+            height: 4px;
+            background: #c9a227;
+            margin: 20px auto 0;
+            border-radius: 5px;
+        }
+
+        /* DISTRIBUCIÓN DE LAS TARJETAS */
+        .servicios-contenedor {
+            display: grid;
+            grid-template-columns: repeat(3, minmax(0, 1fr));
+            gap: 24px;
+        }
+
+        .servicio {
+            background: #fffdf0;
+            border: 1px solid #e5d9a5;
+            border-radius: 12px;
+            padding: 30px 25px;
+            box-shadow: 0 5px 18px rgba(46, 32, 28, 0.08);
+            transition: transform 0.3s ease,
+                        box-shadow 0.3s ease,
+                        border-color 0.3s ease;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .servicio::before {
+            content: "";
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 4px;
+            background: #f0d174;
+        }
+
+        .servicio:hover {
+            transform: translateY(-7px);
+            box-shadow: 0 12px 28px rgba(46, 32, 28, 0.16);
+            border-color: #f0d174;
+        }
+
+        .numero-servicio {
+            width: 45px;
+            height: 45px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            background: #eee2c6;
+            color: #5d2e18;
+            border-radius: 50%;
+            font-size: 19px;
+            font-weight: bold;
+            margin-bottom: 20px;
+        }
+
+        .servicio h3 {
+            color: #38251d;
+            font-size: 18px;
+            line-height: 1.5;
+            margin-bottom: 12px;
+        }
+
+        .servicio p {
+            color: #5c5149;
+            font-size: 14px;
+            line-height: 1.8;
+        }
+
+        /* LLAMADO A LA ACCIÓN */
+        .contacto-servicios {
+            margin-top: 40px;
+            padding: 35px 25px;
+            background: #38251d;
+            border: 1px solid #faf7c1;
+            border-radius: 12px;
+            text-align: center;
+        }
+
+        .contacto-servicios h3 {
+            color: #faf7c1;
+            font-size: 24px;
+            margin-bottom: 15px;
+        }
+
+        .contacto-servicios p {
+            color: #f4eadb;
+            font-size: 15px;
+            line-height: 1.8;
+            margin-bottom: 22px;
+        }
+
+        .boton {
+            display: inline-block;
+            padding: 13px 25px;
+            background: #d6b98c;
+            color: #271710;
+            text-decoration: none;
+            border-radius: 7px;
+            font-weight: bold;
+            transition: 0.3s;
+        }
+
+        .boton:hover {
+            background: #ffffff;
+            transform: translateY(-2px);
+        }
+
+        /* PIE DE PÁGINA */
+        footer {
+            background: #faf7c1;
+            color: #252525;
+            text-align: center;
+            padding: 25px;
+            font-size: 0.9rem;
+            border-top: 1px solid #e6c14a;
+        }
+
+        footer span {
+            color: #8f6c0c;
+        }
+
+        /* DISEÑO RESPONSIVO */
+        @media (max-width: 900px) {
+            .perfil {
+                width: 90%;
+                gap: 30px;
+                padding: 30px;
+            }
+
+            .foto {
+                width: 230px;
+                height: 300px;
+            }
+
+            .servicios-contenedor {
+                grid-template-columns: repeat(2, minmax(0, 1fr));
+            }
+        }
+
+        @media (max-width: 650px) {
+            .barra-navegacion {
+                flex-direction: column;
+                gap: 15px;
+                padding: 18px 20px;
+            }
+
+            .logo-nombre {
+                font-size: 18px;
+                text-align: center;
+            }
+
+            .perfil {
+                flex-direction: column;
+                text-align: center;
+                padding: 30px 20px;
+                margin-top: 35px;
+            }
+
+            .foto {
+                width: 220px;
+                height: 280px;
+            }
+
+            .informacion h1 {
+                font-size: 27px;
+            }
+
+            .informacion h3 {
+                font-size: 18px;
+            }
+
+            .catalogo {
+                width: 90%;
+            }
+
+            .catalogo-encabezado h2 {
+                font-size: 27px;
+            }
+
+            .servicios-contenedor {
+                grid-template-columns: 1fr;
+            }
+
+            .contacto-servicios h3 {
+                font-size: 21px;
+            }
+        }
+    </style>
+</head>
+
+<body>
+
+    <!-- NAVEGACIÓN -->
+    <nav class="barra-navegacion">
+        <h2 class="logo-nombre">MANAHUIA & ASOCIADOS</h2>
+
+        <ul>
+            <li><a href="op.html">Inicio</a></li>
+        </ul>
+    </nav>
+
+    <!-- PERFIL PROFESIONAL -->
+    <section class="perfil">
+
+        <div class="foto">
+            <img src="abi.png" alt="Fotografía de la Lic. Fátima Abigail Martínez Galicia">
+        </div>
+
+        <div class="informacion">
+
+            <h1>Lic. Fátima Abigail Martínez Galicia</h1>
+
+            <h3>Abogada especialista en Derecho Penal</h3>
+
+        
+
+            <div class="datos">
+
+                <p>
+                    <strong>Especialidad:</strong>
+                    Derecho Penal
+                </p>
+
+                <p>
+                    <strong>Experiencia:</strong>
+                    2 años
+                </p>
+
+                <p>
+                    <strong>Teléfono:</strong>
+                    729-168-6305
+                </p>
+
+                <p>
+                    <strong>Atención:</strong>
+                    Presencial y en línea
+                </p>
+
+            </div>
+        </div>
+    </section>
+
+    <!-- CATÁLOGO DE SERVICIOS PENALES -->
+    <section class="catalogo">
+
+        <div class="catalogo-encabezado">
+
+
+            <h2>Catálogo de Servicios</h2>
+
+            <p>
+                <strong>Derecho Penal</strong><br>
+                Asesoría y representación jurídica en asuntos penales,
+                con atención a los derechos de las personas involucradas
+                y a las particularidades de cada procedimiento.
+            </p>
+
+            <div class="linea-dorada"></div>
+        </div>
+
+        <div class="servicios-contenedor">
+
+            <!-- SERVICIO 1 -->
+            <article class="servicio">
+                <div class="numero-servicio">01</div>
+                <h3>Defensa penal de personas imputadas o acusadas</h3>
+                <p>
+                    Asesoría y representación jurídica durante las
+                    distintas etapas del procedimiento penal, procurando
+                    el respeto al debido proceso y al derecho de defensa.
+                </p>
+            </article>
+
+            <!-- SERVICIO 2 -->
+            <article class="servicio">
+                <div class="numero-servicio">02</div>
+                <h3>Asesoría ante detenciones y citaciones</h3>
+                <p>
+                    Orientación jurídica sobre los derechos de las personas
+                    ante una detención, citación o comparecencia ante
+                    autoridades competentes.
+                </p>
+            </article>
+
+            <!-- SERVICIO 3 -->
+            <article class="servicio">
+                <div class="numero-servicio">03</div>
+                <h3>Seguimiento de carpetas de investigación</h3>
+                <p>
+                    Asesoría y acompañamiento en el seguimiento de
+                    investigaciones, revisión de actuaciones y orientación
+                    sobre las diligencias que correspondan legalmente.
+                </p>
+            </article>
+
+            <!-- SERVICIO 4 -->
+            <article class="servicio">
+                <div class="numero-servicio">04</div>
+                <h3>Defensa en audiencias y juicios orales</h3>
+                <p>
+                    Representación jurídica en audiencias del sistema
+                    penal acusatorio, preparación de estrategias de defensa
+                    y participación en las etapas procesales correspondientes.
+                </p>
+            </article>
+
+            <!-- SERVICIO 5 -->
+            <article class="servicio">
+                <div class="numero-servicio">05</div>
+                <h3>Solicitud de medidas de protección para víctimas</h3>
+                <p>
+                    Orientación y gestión de solicitudes de medidas
+                    de protección ante las autoridades competentes,
+                    conforme a las circunstancias y riesgos del caso.
+                </p>
+            </article>
+
+            <!-- SERVICIO 6 -->
+            <article class="servicio">
+                <div class="numero-servicio">06</div>
+                <h3>Gestión de reparación del daño</h3>
+                <p>
+                    Asesoría para promover la reparación del daño a favor
+                    de víctimas u ofendidos, de acuerdo con los mecanismos
+                    y procedimientos previstos en la legislación aplicable.
+                </p>
+            </article>
+
+            <!-- SERVICIO 7 -->
+            <article class="servicio">
+                <div class="numero-servicio">07</div>
+                <h3>Juicios de amparo en materia penal</h3>
+                <p>
+                    Análisis de posibles violaciones a derechos
+                    fundamentales y asesoría sobre la procedencia del
+                    juicio de amparo frente a actos de autoridad en materia penal.
+                </p>
+            </article>
+
+        </div>
+
+        <!-- CONTACTO -->
+        <div class="contacto-servicios">
+            <h3>¿Necesitas asesoría jurídica?</h3>
+
+            <p>
+
+                Contáctanos para conocer las alternativas jurídicas
+                que podrían corresponder a tu situación.
+            </p>
+
+            <a href="contactanos.html" class="boton">
+                Solicitar asesoría
+            </a>
+        </div>
+
+    </section>
+
+    <!-- PIE DE PÁGINA -->
+    <footer>
+        © 2026
+        <span>MANAHUIA & ASOCIADOS</span>
+        | Todos los derechos reservados.
+    </footer>
+
+</body>
+</html>

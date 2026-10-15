@@ -1,0 +1,577 @@
+
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Nuestros Abogados | MANAHUIA & ASOCIADOS</title>
+
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: "Libre Baskerville", Georgia, serif;
+        }
+
+        body {
+            background-color: #faf7c1;
+            min-height: 100vh;
+        }
+
+        /* BARRA DE NAVEGACIÓN */
+        .barra-navegacion {
+            width: 100%;
+            padding: 18px 40px;
+            background: linear-gradient(90deg, #e6c14a, #faf7c1);
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            position: relative;
+            z-index: 10;
+        }
+
+        .logo-nombre {
+            color: #242423;
+            font-size: 22px;
+            letter-spacing: 2px;
+        }
+
+        .enlaces {
+            display: flex;
+            gap: 35px;
+        }
+
+        .barra-navegacion a {
+            color: #111111;
+            text-decoration: none;
+            font-size: 17px;
+            letter-spacing: 1px;
+            transition: 0.3s ease;
+        }
+
+        .barra-navegacion a:hover,
+        .barra-navegacion a.activo {
+            color: #8f6c0c;
+        }
+
+        /* TÍTULO */
+        .titulo {
+            text-align: center;
+            margin: 55px 20px 35px;
+        }
+
+        .titulo h1 {
+            color: #8f6c0c;
+            font-size: 36px;
+            margin-bottom: 15px;
+        }
+
+        .titulo p {
+            color: #161414;
+            font-size: 16px;
+            line-height: 1.8;
+        }
+
+        .linea-dorada {
+            width: 75px;
+            height: 4px;
+            background: #c9a227;
+            margin: 20px auto 0;
+            border-radius: 5px;
+        }
+
+        /* CONTENEDOR DE PERFILES */
+        .perfiles {
+            width: 90%;
+            max-width: 1100px;
+            margin: auto;
+            display: grid;
+            grid-template-columns: repeat(2, minmax(0, 1fr));
+            gap: 35px;
+            padding-bottom: 60px;
+        }
+
+        /* TARJETAS DE ABOGADOS */
+        .perfil {
+            background: rgba(26, 14, 9, 0.95);
+            border: 1px solid #5c4033;
+            border-radius: 15px;
+            padding: 30px;
+            text-align: center;
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.25);
+            transition: 0.3s;
+        }
+
+        .perfil:hover {
+            transform: translateY(-6px);
+            border-color: #d6b98c;
+        }
+
+        .foto {
+            width: 180px;
+            height: 220px;
+            margin: 0 auto 25px;
+            border-radius: 12px;
+            overflow: hidden;
+            border: 3px solid #d6b98c;
+        }
+
+        .foto img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+        }
+
+        .perfil h2 {
+            color: #d6b98c;
+            font-size: 24px;
+            line-height: 1.5;
+            margin-bottom: 8px;
+        }
+
+        .perfil h3 {
+            color: #f0d174;
+            font-size: 17px;
+            margin-bottom: 20px;
+        }
+
+        .perfil > p {
+            color: #f1eeee;
+            line-height: 1.7;
+            font-size: 15px;
+            margin-bottom: 18px;
+        }
+
+        .datos {
+            text-align: left;
+            margin-top: 15px;
+        }
+
+        .datos p {
+            color: #f1eeee;
+            line-height: 1.7;
+            font-size: 14px;
+            margin-bottom: 8px;
+        }
+
+        .datos strong {
+            color: #d6b98c;
+        }
+
+        .datos a {
+            color: #f1eeee;
+            text-decoration: none;
+        }
+
+        .datos a:hover {
+            color: #e6c14a;
+        }
+
+        /* CATÁLOGO DE SERVICIOS CIVILES */
+        .catalogo {
+            width: 90%;
+            max-width: 1100px;
+            margin: 0 auto 70px;
+        }
+
+        .catalogo-encabezado {
+            text-align: center;
+            margin-bottom: 40px;
+        }
+
+        .catalogo-encabezado .subtitulo {
+            color: #8f6c0c;
+            text-transform: uppercase;
+            letter-spacing: 3px;
+            font-size: 13px;
+            margin-bottom: 12px;
+        }
+
+        .catalogo-encabezado h2 {
+            color: #38251d;
+            font-size: 34px;
+            margin-bottom: 15px;
+        }
+
+        .catalogo-encabezado .descripcion {
+            color: #51443b;
+            max-width: 750px;
+            margin: 0 auto;
+            line-height: 1.8;
+            font-size: 15px;
+        }
+
+        /* TARJETAS DE SERVICIOS */
+        .servicios-contenedor {
+            display: grid;
+            grid-template-columns: repeat(2, minmax(0, 1fr));
+            gap: 25px;
+        }
+
+        .servicio {
+            background: #fffdf0;
+            border: 1px solid #e5d9a5;
+            border-radius: 12px;
+            padding: 30px;
+            box-shadow: 0 5px 18px rgba(46, 32, 28, 0.08);
+            position: relative;
+            overflow: hidden;
+            transition: 0.3s ease;
+        }
+
+        .servicio::before {
+            content: "";
+            position: absolute;
+            top: 0;
+            left: 0;
+            height: 4px;
+            width: 100%;
+            background: #c9a227;
+        }
+
+        .servicio:hover {
+            transform: translateY(-6px);
+            border-color: #c9a227;
+            box-shadow: 0 12px 28px rgba(46, 32, 28, 0.16);
+        }
+
+        .numero-servicio {
+            width: 45px;
+            height: 45px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            border-radius: 50%;
+            background: #eee2c6;
+            color: #5d2e18;
+            font-size: 18px;
+            font-weight: bold;
+            margin-bottom: 18px;
+        }
+
+        .servicio h3 {
+            color: #38251d;
+            font-size: 19px;
+            line-height: 1.6;
+            margin-bottom: 12px;
+        }
+
+        .servicio p {
+            color: #5c5149;
+            font-size: 14px;
+            line-height: 1.9;
+        }
+
+        /* INVITACIÓN A CONTACTAR */
+        .contacto-servicios {
+            margin-top: 40px;
+            padding: 35px 25px;
+            background: #38251d;
+            border: 1px solid #c9a227;
+            border-radius: 12px;
+            text-align: center;
+        }
+
+        .contacto-servicios h3 {
+            color: #e9cb69;
+            font-size: 24px;
+            margin-bottom: 15px;
+        }
+
+        .contacto-servicios p {
+            color: #f4eadb;
+            font-size: 15px;
+            line-height: 1.8;
+            margin-bottom: 22px;
+        }
+
+        .boton {
+            display: inline-block;
+            margin-top: 5px;
+            padding: 13px 25px;
+            background: #d6b98c;
+            color: #1a0e09;
+            text-decoration: none;
+            border-radius: 7px;
+            font-weight: bold;
+            transition: 0.3s;
+        }
+
+        .boton:hover {
+            background: white;
+            transform: translateY(-2px);
+        }
+
+        /* PIE DE PÁGINA */
+        footer {
+            background: #faf7c1;
+            color: #252525;
+            text-align: center;
+            padding: 25px;
+            font-size: 0.9rem;
+            border-top: 1px solid #e6c14a;
+        }
+
+        footer span {
+            color: #8f6c0c;
+        }
+
+        /* ADAPTACIÓN A TABLETAS Y CELULARES */
+        @media (max-width: 750px) {
+            .barra-navegacion {
+                flex-direction: column;
+                gap: 12px;
+                padding: 18px 20px;
+            }
+
+            .logo-nombre {
+                font-size: 18px;
+                text-align: center;
+            }
+
+            .perfiles {
+                grid-template-columns: 1fr;
+                width: 90%;
+            }
+
+            .titulo h1 {
+                font-size: 29px;
+            }
+
+            .catalogo-encabezado h2 {
+                font-size: 28px;
+            }
+
+            .servicios-contenedor {
+                grid-template-columns: 1fr;
+            }
+        }
+    </style>
+</head>
+
+<body>
+
+    <!-- BARRA DE NAVEGACIÓN -->
+    <nav class="barra-navegacion">
+
+        <div class="logo-nombre">MANAHUIA & ASOCIADOS</div>
+
+        <div class="enlaces">
+            <a href="op.html" class="activo">Inicio</a>
+        </div>
+
+    </nav>
+
+    <!-- TÍTULO PRINCIPAL -->
+    <header class="titulo">
+
+        <h1>Nuestros Abogados</h1>
+
+        <p>
+            Conoce a los profesionales que estarán a cargo
+            de tu asesoría jurídica.
+        </p>
+
+        <div class="linea-dorada"></div>
+
+    </header>
+
+    <!-- PERFILES DE LOS ABOGADOS -->
+    <section class="perfiles">
+
+        <!-- PERFIL 1 -->
+        <article class="perfil">
+
+            <div class="foto">
+                <img src="nat.jpeg" alt="Fotografía de la Lic. Natalia Vilchis González">
+            </div>
+
+            <h2>Lic. Natalia Vilchis González</h2>
+
+            <h3>Especialista en Derecho Civil</h3>
+
+    
+
+            <div class="datos">
+
+                <p>
+                    <strong>Experiencia:</strong> 2 años
+                </p>
+
+                <p>
+                    <strong>Especialidad:</strong> Derecho Civil
+                </p>
+
+                <p>
+                    <strong>Atención:</strong> Presencial y en línea
+                </p>
+
+                <p>
+                    <strong>Contacto:</strong>
+                    <a href="tel:7225850451">722-585-0451</a>
+                </p>
+
+            </div>
+
+        </article>
+
+        <!-- PERFIL 2 -->
+        <article class="perfil">
+
+            <div class="foto">
+                <img src="yo.png" alt="Fotografía de la Lic. Yamileth Almazán Salinas">
+            </div>
+
+            <h2>Lic. Yamileth Almazán Salinas</h2>
+
+            <h3>Especialista en Derecho Civil</h3>
+
+            
+
+            <div class="datos">
+
+                <p>
+                    <strong>Experiencia:</strong> 2 años
+                </p>
+
+                <p>
+                    <strong>Especialidad:</strong> Derecho Civil
+                </p>
+
+                <p>
+                    <strong>Atención:</strong> Presencial y en línea
+                </p>
+
+                <p>
+                    <strong>Contacto:</strong>
+                    <a href="tel:7225140285">722-514-0285</a>
+                </p>
+
+            </div>
+
+        </article>
+
+    </section>
+
+    <!-- CATÁLOGO DE SERVICIOS -->
+    <section class="catalogo">
+
+        <div class="catalogo-encabezado">
+
+
+            <h2>Catálogo de Servicios</h2>
+
+            <p class="descripcion">
+                <strong>Derecho Civil</strong><br>
+                Ofrecemos orientación jurídica para la elaboración de
+                contratos, la protección de derechos patrimoniales y la
+                prevención y solución de controversias.
+                Cada asunto se analiza de acuerdo con sus circunstancias
+                y la legislación aplicable.
+            </p>
+
+            <div class="linea-dorada"></div>
+
+        </div>
+
+        <div class="servicios-contenedor">
+
+            <!-- SERVICIO 1 -->
+            <article class="servicio">
+
+                <div class="numero-servicio">01</div>
+
+                <h3>Elaboración, revisión y negociación de contratos civiles</h3>
+
+                <p>
+                    Redacción, revisión y análisis de cláusulas
+                    contractuales para identificar obligaciones,
+                    derechos, riesgos y condiciones de cumplimiento.
+                    Asesoría durante la negociación para procurar
+                    acuerdos claros entre las partes.
+                </p>
+
+            </article>
+
+            <!-- SERVICIO 2 -->
+            <article class="servicio">
+
+                <div class="numero-servicio">02</div>
+
+                <h3>Contratos de compraventa, arrendamiento y comodato</h3>
+
+                <p>
+                    Asesoría en la preparación y revisión de contratos
+                    de compraventa de bienes, arrendamiento de inmuebles
+                    y comodato. Orientación sobre las obligaciones de
+                    las partes, las condiciones pactadas y las
+                    consecuencias de su incumplimiento.
+                </p>
+
+            </article>
+
+            <!-- SERVICIO 3 -->
+            <article class="servicio">
+
+                <div class="numero-servicio">03</div>
+
+                <h3>Juicios por daños y perjuicios</h3>
+
+                <p>
+                    Asesoría y representación en controversias
+                    relacionadas con daños ocasionados a personas
+                    o bienes, así como en reclamaciones por perjuicios.
+
+                </p>
+
+            </article>
+
+            <!-- SERVICIO 4 -->
+            <article class="servicio">
+
+                <div class="numero-servicio">04</div>
+
+                <h3>Convenios y negociación para solucionar controversias</h3>
+
+                <p>
+                    Elaboración de convenios y acompañamiento en
+                    negociaciones para alcanzar acuerdos entre
+                    particulares. Se busca prevenir o resolver
+                    conflictos mediante soluciones legales.
+                </p>
+
+            </article>
+
+        </div>
+
+        <!-- CONTACTO -->
+        <div class="contacto-servicios">
+
+            <h3>¿Necesitas asesoría en materia civil?</h3>
+
+            <p>
+               Contáctanos para conocer las alternativas jurídicas
+                que podrían corresponder a tu situación.
+               
+            </p>
+
+            <a href="contactanos.html" class="boton">
+                Solicitar asesoría
+            </a>
+
+        </div>
+
+    </section>
+
+    <!-- PIE DE PÁGINA -->
+    <footer>
+
+        © 2026
+        <span>MANAHUIA & ASOCIADOS</span>
+        | Todos los derechos reservados.
+
+    </footer>
+
+</body>
+</html>

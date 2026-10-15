@@ -1,0 +1,551 @@
+
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Redes Sociales | MANAHUIA & ASOCIADOS</title>
+
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: "Libre Baskerville", serif;
+            background: linear-gradient(135deg, #faf7c1, #e6c14a);
+            min-height: 100vh;
+            display: flex;
+            flex-direction: column;
+        }
+
+        .barra-navegacion {
+            width: 100%;
+            padding: 18px 40px;
+            background: linear-gradient(90deg, #e6c14a, #faf7c1);
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            position: relative;
+            z-index: 10;
+        }
+
+        .logo-nombre {
+            color: #111111;
+            font-size: 22px;
+            letter-spacing: 2px;
+        }
+
+        .enlaces {
+            display: flex;
+            gap: 35px;
+        }
+
+        .barra-navegacion a {
+            color: #111111;
+            text-decoration: none;
+            font-size: 17px;
+            letter-spacing: 1px;
+            transition: 0.3s ease;
+        }
+
+        .barra-navegacion a:hover {
+            color: #C9A227;
+        }
+
+        .redes {
+            width: 90%;
+            max-width: 1000px;
+            text-align: center;
+            padding: 60px 30px;
+            margin: 0 auto;
+            flex: 1;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+        }
+
+        .redes h1 {
+            font-size: 3rem;
+            color: #111111;
+            margin-bottom: 15px;
+        }
+
+        .redes > p {
+            color: #27160d;
+            font-size: 1.1rem;
+            margin-bottom: 45px;
+        }
+
+        .redes-contenedor {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 25px;
+            max-width: 750px;
+            width: 100%;
+            margin: 0 auto;
+        }
+
+        .red-social {
+            background: white;
+            padding: 35px 20px;
+            border: none;
+            border-radius: 20px;
+            text-decoration: none;
+            color: #263238;
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.08);
+            transition: all 0.3s ease;
+            position: relative;
+            overflow: hidden;
+            cursor: pointer;
+            font-family: inherit;
+        }
+
+        .red-social:hover {
+            transform: translateY(-10px);
+            box-shadow: 0 20px 40px rgba(0, 0, 0, 0.15);
+        }
+
+        .icono {
+            width: 75px;
+            height: 75px;
+            margin: 0 auto 20px;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            transition: transform 0.3s ease;
+        }
+
+        .icono img {
+            width: 35px;
+            height: auto;
+        }
+
+        .red-social:hover .icono {
+            transform: scale(1.15) rotate(5deg);
+        }
+
+        .red-social h2 {
+            font-size: 1.3rem;
+            margin-bottom: 8px;
+            color: #091a27;
+        }
+
+        .instagram .icono {
+            background: #fce4ec;
+        }
+
+        .gmail .icono {
+            background: #e3f2fd;
+        }
+
+        .whatsapp .icono {
+            background: #e8f5e9;
+        }
+
+        .red-social::after {
+            content: "";
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            width: 100%;
+            height: 4px;
+            transform: scaleX(0);
+            transition: transform 0.3s ease;
+        }
+
+        .red-social:hover::after {
+            transform: scaleX(1);
+        }
+
+        .instagram::after {
+            background: #e1306c;
+        }
+
+        .gmail::after {
+            background: #f21818;
+        }
+
+        .whatsapp::after {
+            background: #25d366;
+        }
+
+        footer {
+            background: #faf7c1;
+            color: #252525;
+            text-align: center;
+            padding: 25px;
+            font-size: 0.9rem;
+        }
+
+        footer span {
+            color: #C9A227;
+        }
+
+        /* Ventana emergente */
+        .modal {
+            display: none;
+            position: fixed;
+            inset: 0;
+            z-index: 1000;
+            background: rgba(0, 0, 0, 0.60);
+            justify-content: center;
+            align-items: center;
+            padding: 20px;
+        }
+
+        .modal.contenido-visible {
+            display: flex;
+        }
+
+        .modal-contenido {
+            background: #fffdf0;
+            width: 100%;
+            max-width: 420px;
+            padding: 35px 28px;
+            border-radius: 18px;
+            position: relative;
+            text-align: center;
+            box-shadow: 0 15px 45px rgba(0, 0, 0, 0.25);
+            animation: aparecer 0.25s ease;
+        }
+
+        @keyframes aparecer {
+            from {
+                opacity: 0;
+                transform: translateY(-15px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        .cerrar {
+            position: absolute;
+            top: 10px;
+            right: 16px;
+            background: none;
+            border: none;
+            font-size: 28px;
+            color: #555;
+            cursor: pointer;
+        }
+
+        .modal-contenido h2 {
+            color: #27160d;
+            margin-bottom: 12px;
+            font-size: 1.5rem;
+        }
+
+        .modal-contenido p {
+            color: #555;
+            font-size: 0.95rem;
+            line-height: 1.5;
+            margin-bottom: 20px;
+        }
+
+        .modal-contenido label {
+            display: block;
+            text-align: left;
+            margin-bottom: 8px;
+            color: #27160d;
+            font-weight: bold;
+            font-size: 0.9rem;
+        }
+
+        .modal-contenido input {
+            width: 100%;
+            padding: 13px;
+            border: 1px solid #d4c88a;
+            border-radius: 8px;
+            font-size: 1rem;
+            margin-bottom: 18px;
+            outline: none;
+        }
+
+        .modal-contenido input:focus {
+            border-color: #b18b19;
+            box-shadow: 0 0 0 2px rgba(201, 162, 39, 0.2);
+        }
+
+        .boton-enviar {
+            width: 100%;
+            padding: 13px;
+            background: #b18b19;
+            color: white;
+            border: none;
+            border-radius: 8px;
+            font-size: 1rem;
+            font-weight: bold;
+            cursor: pointer;
+            transition: 0.3s;
+        }
+
+        .boton-enviar:hover {
+            background: #8f6c0c;
+        }
+
+        .whatsapp-boton {
+            background: #25a95a;
+        }
+
+        .whatsapp-boton:hover {
+            background: #168642;
+        }
+
+        .mensaje-error {
+            color: #b42318;
+            font-size: 0.85rem;
+            margin-top: 10px;
+            display: none;
+        }
+
+        @media (max-width: 850px) {
+            .barra-navegacion {
+                flex-direction: column;
+                gap: 12px;
+                padding: 12px 20px;
+            }
+
+            .redes-contenedor {
+                grid-template-columns: repeat(2, 1fr);
+            }
+
+            .redes h1 {
+                font-size: 2.4rem;
+            }
+        }
+
+        @media (max-width: 500px) {
+            .redes-contenedor {
+                grid-template-columns: 1fr;
+            }
+
+            .redes h1 {
+                font-size: 2rem;
+            }
+
+            .redes {
+                padding: 40px 10px;
+            }
+
+            .logo-nombre {
+                font-size: 18px;
+                text-align: center;
+            }
+        }
+    </style>
+</head>
+
+<body>
+
+    <nav class="barra-navegacion">
+        <div class="logo-nombre">MANAHUIA & ASOCIADOS</div>
+        <div class="enlaces">
+            <a href="op.html">Inicio</a>
+        </div>
+    </nav>
+
+    <section class="redes">
+        <h1>Contáctanos</h1>
+        <p>
+            Estamos aquí para escucharte. Elige la vía que prefieras
+            y nos pondremos en contacto contigo.
+        </p>
+
+        <div class="redes-contenedor">
+
+            <!-- Instagram -->
+            <a href="https://www.instagram.com/manahuia.asociados?igsi=cW1iY3BwY2htaTV1"
+               target="_blank"
+               rel="noopener noreferrer"
+               class="red-social instagram">
+
+                <div class="icono">
+                    <img src="instagram.png" alt="Instagram">
+                </div>
+
+                <h2>Instagram</h2>
+            </a>
+
+            <!-- Gmail: abre la ventana emergente -->
+            <button type="button"
+                    class="red-social gmail"
+                    onclick="abrirModal('gmail')">
+
+                <div class="icono">
+                    <img src="gmail.png" alt="Gmail">
+                </div>
+
+                <h2>Gmail</h2>
+            </button>
+
+            <!-- WhatsApp: abre la ventana emergente -->
+            <button type="button"
+                    class="red-social whatsapp"
+                    onclick="abrirModal('whatsapp')">
+
+                <div class="icono">
+                    <img src="whatsapp.png" alt="WhatsApp">
+                </div>
+
+                <h2>WhatsApp</h2>
+            </button>
+
+        </div>
+    </section>
+
+    <footer>
+        © 2026
+        <span>MANAHUIA & ASOCIADOS</span>
+        | Todos los derechos reservados.
+    </footer>
+
+    <!-- VENTANA EMERGENTE DE GMAIL -->
+    <div class="modal" id="modalGmail"
+         role="dialog" aria-modal="true"
+         aria-labelledby="tituloGmail">
+
+        <div class="modal-contenido">
+            <button class="cerrar" type="button"
+                    onclick="cerrarModal()"
+                    aria-label="Cerrar">&times;</button>
+
+            <h2 id="tituloGmail">Contacto por Gmail</h2>
+
+            <p>Escribenos al correo manahuaasociados@gmail.com</p>
+
+           
+        </div>
+    </div>
+
+    <!-- VENTANA EMERGENTE DE WHATSAPP -->
+    <div class="modal" id="modalWhatsapp"
+         role="dialog" aria-modal="true"
+         aria-labelledby="tituloWhatsapp">
+
+        <div class="modal-contenido">
+            <button class="cerrar" type="button"
+                    onclick="cerrarModal()"
+                    aria-label="Cerrar">&times;</button>
+
+            <h2 id="tituloWhatsapp">Contacto por WhatsApp</h2>
+
+            <p>
+                Escribe el número de nuestro abogado al que deseas contactar,
+                incluyendo el código de país.
+            </p>
+
+            <form onsubmit="enviarWhatsapp(event)">
+                <label for="telefono">Número de teléfono</label>
+
+                <input type="tel"
+                       id="telefono"
+                       placeholder="Ej. 525512345678"
+                       inputmode="numeric"
+                       required>
+
+                <button class="boton-enviar whatsapp-boton"
+                        type="submit">
+                    Continuar a WhatsApp
+                </button>
+
+                <div class="mensaje-error" id="errorWhatsapp"
+                     role="alert"></div>
+            </form>
+        </div>
+    </div>
+
+    <script>
+        function abrirModal(tipo) {
+            cerrarModal();
+
+            if (tipo === "gmail") {
+                document.getElementById("modalGmail")
+                    .classList.add("contenido-visible");
+
+                document.getElementById("correo").focus();
+            }
+
+            if (tipo === "whatsapp") {
+                document.getElementById("modalWhatsapp")
+                    .classList.add("contenido-visible");
+
+                document.getElementById("telefono").focus();
+            }
+        }
+
+        function cerrarModal() {
+            document.querySelectorAll(".modal").forEach(modal => {
+                modal.classList.remove("contenido-visible");
+            });
+
+            document.querySelectorAll(".mensaje-error").forEach(error => {
+                error.style.display = "none";
+                error.textContent = "";
+            });
+        }
+
+        function enviarGmail(event) {
+            event.preventDefault();
+
+            const correo = document.getElementById("correo").value.trim();
+            const error = document.getElementById("errorGmail");
+
+            if (!correo || !correo.includes("@")) {
+                error.textContent = "Escribe un correo electrónico válido.";
+                error.style.display = "block";
+                return;
+            }
+
+            const destino = "mailto:" + correo;
+            window.location.href = destino;
+        }
+
+        function enviarWhatsapp(event) {
+            event.preventDefault();
+
+            const telefonoInput =
+                document.getElementById("telefono").value.trim();
+
+            const error = document.getElementById("errorWhatsapp");
+
+            // Elimina espacios, guiones, paréntesis y el signo +
+            const telefono = telefonoInput.replace(/[\s()+-]/g, "");
+
+            // Se requiere un número internacional sin el signo +
+            if (!/^\d{8,15}$/.test(telefono)) {
+                error.textContent =
+                    "Escribe un número válido con código de país, solo dígitos.";
+                error.style.display = "block";
+                return;
+            }
+
+            const destino = "https://wa.me/" + telefono;
+
+            window.open(destino, "_blank", "noopener,noreferrer");
+        }
+
+        // Cerrar al hacer clic fuera de la ventana
+        document.querySelectorAll(".modal").forEach(modal => {
+            modal.addEventListener("click", function(event) {
+                if (event.target === modal) {
+                    cerrarModal();
+                }
+            });
+        });
+
+        // Cerrar al presionar Escape
+        document.addEventListener("keydown", function(event) {
+            if (event.key === "Escape") {
+                cerrarModal();
+            }
+        });
+    </script>
+
+</body>
+</html>

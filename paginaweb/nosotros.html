@@ -1,0 +1,301 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Misión, Visión y Valores</title>
+
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: "Libre Baskerville", serif;
+            background: linear-gradient(135deg,#e6c14a, #f5f095 );
+            color:#27160d;
+            min-height: 100vh;
+        }
+
+        .barra-navegacion {
+            width: 100%;
+            padding: 18px 40px;
+            background: linear-gradient(90deg, #faf7c1, #e6c14a);
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            position: relative;
+            z-index: 10;
+        }
+
+        .barra-navegacion .logo-nombre {
+            color: #111111;
+            font-size: 22px;
+            letter-spacing: 2px;
+        }
+
+        .barra-navegacion .enlaces {
+            display: flex;
+            gap: 35px;
+        }
+
+        .barra-navegacion a {
+            color: #252525;
+            text-decoration: none;
+            font-size: 17px;
+            letter-spacing: 1px;
+            transition: 0.3s ease;
+        }
+
+        .barra-navegacion a:hover,
+        .barra-navegacion a.activo {
+            color: #C9A227;
+            text-shadow: 0 0 6px rgba(255,255,255,0.4);
+        }
+
+        header {
+            text-align: center;
+            padding: 70px 20px 40px;
+        }
+
+        header h1 {
+            font-size: 3rem;
+            color:#27160d;
+            margin-bottom: 15px;
+            letter-spacing: 1px;
+        }
+
+        header p {
+            font-size: 1.1rem;
+            color: #142415;
+            max-width: 700px;
+            margin: auto;
+        }
+
+        .contenedor {
+            width: 90%;
+            max-width: 1200px;
+            margin: 30px auto 80px;
+
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 30px;
+        }
+
+        .tarjeta {
+            background: white;
+            border-radius: 20px;
+            padding: 40px 30px;
+            text-align: center;
+
+            box-shadow: 0 10px 30px rgba(151, 67, 67, 0.08);
+
+            transition: all 0.3s ease;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .tarjeta::before {
+            content: "";
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 6px;
+        }
+
+        .tarjeta:hover {
+            transform: translateY(-10px);
+            box-shadow: 0 20px 40px rgba(0, 0, 0, 0.15);
+        }
+
+
+        .icono {
+            width: 80px;
+            height: 80px;
+            margin: 0 auto 25px;
+
+            display: flex;
+            align-items: center;
+            justify-content: center;
+
+            border-radius: 50%;
+            font-size: 35px;
+        }
+    
+        .mision::before {
+            background: #f5ef83;
+        }
+
+        .mision .icono {
+            background: #eed29b;
+            color:#6b432e;
+        }
+
+        .vision::before {
+            background: #dbbd58;
+        }
+
+        .vision .icono {
+            background: #eed29b;
+            color: #55311d;
+        }
+
+        .valores::before {
+            background: #C9A227;
+        }
+
+        .valores .icono {
+            background: #eed29b;
+            color: #4d2c1a;
+        }
+
+        .tarjeta h2 {
+            font-size: 1.8rem;
+            margin-bottom: 18px;
+            color: #0f0f0f;
+        }
+
+        .tarjeta p {
+            font-size: 1rem;
+            line-height: 1.8;
+            color: #0f0f0f;
+        }
+
+        .lista-valores {
+            list-style: none;
+            margin-top: 20px;
+        }
+
+        .lista-valores li {
+            padding: 10px 0;
+            font-size: 1rem;
+            color: #0f0f0f;
+            border-bottom: 1px solid #eeeeee;
+        }
+
+        .lista-valores li:last-child {
+            border-bottom: none;
+        }
+
+        .lista-valores li::before {
+            content: "✓";
+            color: #39d84e;
+            font-weight: bold;
+            margin-right: 10px;
+        }
+
+        footer {
+            background: #faf7c1;
+            color: #252525;
+            text-align: center;
+            padding: 25px;
+            font-size: 0.9rem;
+        }
+
+        footer span {
+            color:#C9A227;
+        }
+
+        @media (max-width: 900px) {
+            .contenedor {
+                grid-template-columns: 1fr;
+                max-width: 600px;
+            }
+
+            header h1 {
+                font-size: 2.3rem;
+            }
+
+            .barra-navegacion {
+                flex-direction: column;
+                gap: 12px;
+                padding: 12px 20px;
+            }
+        }
+
+        @media (max-width: 500px) {
+            header {
+                padding-top: 45px;
+            }
+
+            header h1 {
+                font-size: 2rem;
+            }
+
+            .tarjeta {
+                padding: 35px 25px;
+            }
+        }
+    </style>
+</head>
+
+<body>
+    <nav class="barra-navegacion">
+        <div class="logo-nombre">MANAHUIA & ASOCIADOS</div>
+        <div class="enlaces">
+            <a href="op.html">Inicio</a>
+        </div>
+    </nav>
+
+    <header>
+        <h1>¿Quiénes Somos?</h1>
+        <p>
+            Conoce los principios que orientan nuestro trabajo,
+            nuestros objetivos y el compromiso que tenemos con nuestra comunidad.
+        </p>
+    </header>
+
+    <main class="contenedor">
+
+        <section class="tarjeta mision">
+            <div class="icono">
+                 <img src="lupa.png" style="width: 35px; height: auto;" alt="Ejemplo">
+            </div>
+
+            <h2>Misión</h2>
+
+            <p>
+                Proteger y defender los intereses de nuestros clientes mediante soluciones jurídicas estratégicas, firmes y eficaces. En MANAHUIA, entendemos el Derecho como una herramienta de protección, prevención y defensa, brindando respaldo y seguridad jurídica frente a los desafíos que nuestros clientes puedan enfrentar. 
+            </p>
+        </section>
+
+        <section class="tarjeta vision">
+            <div class="icono">
+                 <img src="jurado.png" style="width: 35px; height: auto;" alt="Ejemplo">
+            </div>
+
+            <h2>Visión</h2>
+
+            <p>
+                Ser una firma jurídica reconocida por la solidez de sus estrategias, la calidad de su ejercicio profesional y la confianza que genera en sus clientes. Aspiramos a consolidarnos mediante un trabajo basado en el análisis jurídico, la responsabilidad profesional y la búsqueda de soluciones viables ante las distintas necesidades y circunstancias que puedan presentarse. 
+            </p>
+        </section>
+        <section class="tarjeta valores">
+            <div class="icono">⭐</div>
+
+            <h2>Valores</h2>
+
+            <ul class="lista-valores">
+                <li>Confianza</li>
+                <li>Lealtad </li>
+                <li>Compromiso</li>
+                <li>Trabajo en equipo</li>
+                <li>Honestidad</li> 
+            </ul>
+        </section>
+
+    </main>
+     <footer>
+
+        © 2026
+        <span>MANAHUIA & ASOCIADOS</span>
+        | Todos los derechos reservados.
+
+    </footer>
+   
+
+</body>
+</html>

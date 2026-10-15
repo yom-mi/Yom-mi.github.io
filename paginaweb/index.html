@@ -1,0 +1,298 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>MANAHUIA & ASOCIADOS | Firma </title>
+
+    <style>
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        html {
+            scroll-behavior: smooth;
+        }
+
+        body {
+           font-family: "Libre Baskerville", serif;
+            background: #dfdbdb;
+            color: #222;
+        }
+
+
+        nav {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 75px;
+            background: #faf7c1 ;
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            padding: 0 7%;
+            z-index: 1000;
+            box-shadow: 0 3px 15px rgba(0, 0, 0, 0.25);
+        }
+
+        .logo {
+            color: #110e04;
+            font-size: 1.5rem;
+            font-weight: bold;
+            letter-spacing: 2px;
+            text-decoration: none;
+        }
+
+        .logo span {
+            color: #C9A227;
+        }
+
+        .menu {
+            display: flex;
+            list-style: none;
+            gap: 35px;
+        }
+
+        .menu a {
+            text-decoration: none;
+            color: #27160d;
+
+            font-size: 1rem;
+
+            transition: 0.3s;
+        }
+
+        .menu a:hover {
+            color: #C9A227;
+        }
+
+
+        .inicio {
+
+            min-height: 100vh;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            text-align: center;
+            padding: 100px 20px;
+            position: relative;
+
+            background:
+                linear-gradient(
+                   rgb(24, 13, 8),
+                   rgba(26, 14, 9, 0.9)
+                ),
+                url("https://i.pinimg.com/1200x/64/6a/59/646a59c2206c40506acd054832543651.jpg");
+
+            background-size: cover;
+            background-position: center;
+        }
+
+        .contenido-inicio {
+            max-width: 900px;
+            color: #faf7c1;
+
+            animation: aparecer 1.2s ease;
+        }
+
+        .contenido-inicio h1 {
+           font-family: "Libre Baskerville", serif;
+            font-size: 4.5rem;
+            letter-spacing: 4px;
+            margin-bottom: 20px;
+        }
+
+        .linea {
+            width: 100px;
+            height: 3px;
+            background:#C9A227;
+            margin: 0 auto 25px;
+        }
+
+
+        .lema {
+            font-family: "Libre Baskerville", serif;
+            font-size: 1.2rem;
+            font-style: italic;
+            color: #e8e8e8;
+            margin-bottom: 35px;
+        }
+
+
+        .descripcion {
+            max-width: 700px;
+            margin: 0 auto 35px;
+            line-height: 1.8;
+            color: #d6d6d6;
+           font-family: "Libre Baskerville", serif;
+        }
+
+        #nosotros {
+            padding: 100px 10%;
+            text-align: center;
+            background: #FFFDD0;
+        }
+
+        #nosotros h2 {
+            font-family: "Libre Baskerville", serif;
+            color: #27160d;
+            font-size: 2.5rem;
+            margin-bottom: 20px;
+        }
+
+        #nosotros .linea {
+            margin-bottom: 30px;
+        }
+
+        #nosotros p {
+            max-width: 800px;
+            margin: auto;
+            line-height: 1.8;
+            color: #252525;
+            font-family: "Libre Baskerville", serif;
+            font-size: 1.05rem;
+        }
+
+        footer {
+            background: #faf7c1;
+
+            color: #252525;
+
+            text-align: center;
+
+            padding: 25px;
+
+            font-size: 0.9rem;
+        }
+
+        footer span {
+            color: #C9A227;
+        }
+
+
+        @keyframes aparecer {
+
+            from {
+                opacity: 0;
+                transform: translateY(30px);
+            }
+
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+
+        }
+
+
+        @media (max-width: 700px) {
+
+            nav {
+                padding: 0 20px;
+            }
+
+            .logo {
+                font-size: 1.1rem;
+            }
+
+            .menu {
+                gap: 15px;
+            }
+
+            .menu a {
+                font-size: 0.85rem;
+            }
+
+            .contenido-inicio h1 {
+                font-size: 2.8rem;
+            }
+
+            .lema {
+                font-size: 1.2rem;
+            }
+
+            .balanza {
+                font-size: 50px;
+            }
+
+        }
+
+    </style>
+</head>
+
+
+<body>
+
+    <nav class="barra-navegacion">
+
+        <a href="index.html" class="logo">
+            MANAHUIA & ASOCIADOS
+        </a>
+
+        <ul class="menu">
+
+            <li>
+                <a href="nosotros.html">Nosotros</a>
+            </li>
+ <li>
+                <a href="servicios.html">Servicios</a>
+            </li>
+            <li>
+                <a href="contactanos.html">Contacto</a>
+            </li>
+
+        </ul>
+
+    </nav>
+
+    <section class="inicio" id="inicio">
+
+        <div class="contenido-inicio">
+
+            <h1>
+                MANAHUIA & ASOCIADOS
+            </h1>
+
+            <div class="linea"></div>
+
+            <p class="lema">
+                "Defendemos y protegemos."
+            </p>
+
+            <p class="descripcion">
+                Somos una firma auditora, creada para verificar, dar confianza y legalidad de la administración de terceros, poniendo en primer lugar al cliente que solicite nuestros servicios.
+            </p>
+
+        </div>
+
+    </section>
+    <section id="nosotros">
+        <h2>
+            Horarios
+        </h2>
+
+        <div class="linea"></div>
+
+        <p>
+            Nuestros horarios de atención son de lunes a viernes de 9:00 AM a 5:00 PM.
+        </p>
+
+    </section>
+    
+
+    <footer>
+
+        © 2026
+        <span>MANAHUIA & ASOCIADOS</span>
+        | Todos los derechos reservados.
+
+    </footer>
+
+
+</body>
+</html>
